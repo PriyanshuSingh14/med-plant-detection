@@ -46,7 +46,7 @@ const WebCam=()=>{
           <Button variant="contained"
             component="span"
             color="primary"
-            sx={{ mr: 2 }} onClick={sendPhoto}>Upload photo</Button>
+            sx={{ mr: 2 }} onClick={(e)=>{sendPhoto(e)}}>Upload photo</Button>
           </>
 
         ) : (
