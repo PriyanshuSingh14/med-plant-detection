@@ -5,3 +5,8 @@ export const webcamAtom=atom({
     default:false,
 })
 
+export const backButtonAtom=atom({
+    key:"backButton",
+    default:false,
+})
+

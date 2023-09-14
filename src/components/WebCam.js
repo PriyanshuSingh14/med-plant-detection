@@ -3,7 +3,7 @@ import { useCallback, useRef, useState } from "react";
 import { Button } from "@mui/material";
 import axios from "axios";
 
-const WebCam=()=>{
+const WebCam=({onImageCapture})=>{
     const webcamRef = useRef(null); 
     const [imgSrc, setImgSrc] = useState(null);
     const retake = () => {
@@ -13,10 +13,12 @@ const WebCam=()=>{
     const capture = useCallback(() => {
         const imageSrc = webcamRef.current.getScreenshot();
         setImgSrc(imageSrc);
+        onImageCapture(imageSrc);
       }, [webcamRef]);
 
       const sendPhoto = async (e) => {
         e.preventDefault();
+        
         const formdata = new FormData();
         formdata.append("file", imgSrc);
     
