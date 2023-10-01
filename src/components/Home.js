@@ -1,8 +1,11 @@
 
+
 import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
 import homebg from "./images/homebg.jpg"
-import React from 'react';
+import React, { useEffect } from 'react';
 import HomePageContainer from "./HomePageContainer";
+import lg from "./images/logofront.png"
+import axios from "axios";
 
 const Home = () => {
   const divStyle = {
@@ -15,9 +18,9 @@ const Home = () => {
     backgroundImage: `url(${homebg})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
+    backgroundPosition: "center center",
     width: "100%",
-    height: "100%",
+    minHeight: "100vh",
     filter: "blur(1px)",
   };
 
@@ -34,6 +37,11 @@ const Home = () => {
     backdropFilter: "blur(3px)", 
   };
 
+  //  useEffect(() => {
+  //   const res = axios.get("http://localhost:3000/users");
+  //   console.log(res);
+  //  },[]);
+
   return (
     <div style={divStyle}>
       <div style={backgroundStyle}></div>
@@ -41,9 +49,9 @@ const Home = () => {
       <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-        
+        <img src={lg} alt="logo" height="70px" width="70px" ></img>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            CHARAKAGIKI
+          AN INNOVATION OF MINISTRY OF AYUSH
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>

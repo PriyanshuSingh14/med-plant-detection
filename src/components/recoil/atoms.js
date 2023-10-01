@@ -10,3 +10,8 @@ export const backButtonAtom=atom({
     default:false,
 })
 
+const captureImageAtom=atom({
+    key:"imgcapture",
+    default:"false"
+})
+

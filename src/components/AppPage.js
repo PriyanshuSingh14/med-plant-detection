@@ -1,9 +1,16 @@
 
+import { useEffect } from "react";
 import background from "./images/front.jpg";
 
-import lg from "./images/logock.png"
+import lg from "./images/logofront.png"
 import { Link } from "react-router-dom";
+import axios from "axios";
 const AppPage=()=>{
+
+    // useEffect(async () => {
+    //  const res = await axios.get("localhost:3000/users");
+    //  console.log(res);
+    // }, [])
 
     const divStyle = {
         backgroundImage: `url(${background})`,
@@ -11,8 +18,8 @@ const AppPage=()=>{
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
-        width: "100vw", 
-        height: "100vh",
+        width: "100%", 
+        minHeight: "100vh",
         display: "flex",
         flexwrap:"wrap",
         justifyContent: "center",

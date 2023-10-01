@@ -7,6 +7,8 @@ import { backButtonAtom, webcamAtom } from "./recoil/atoms";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import axios from "axios";
 import WebCam from "./WebCam";
+import lg from "./images/logofront.png";
+import aloe from "./images/aloe.jpg"
 const ImageRecognition=()=>{
     const divStyle = {
         position: "relative",
@@ -49,16 +51,25 @@ const ImageRecognition=()=>{
     const formdata = new FormData();
     formdata.append("file", selectedFile);
 
-    await axios
-      .post("http://localhost:8000/upload", formdata)
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // await axios
+    //   .post("http://localhost:5000/process_image", formdata)
+    //   .then((res) => {
+    //     console.log(res.data);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+    try{
+    const param = {name: "Priya", age: 20}
+    const res = await axios.post("http://localhost:3000/users", param);
+    console.log(res);
+    }
+    catch(e){
+      console.log(e)
+    }
   };
-  const[capturedImage,setCapturedImage]=useState();
+  const[img,setImg]=useState(false);
+  const[capturedImage,setCapturedImage]=useState(aloe);
   const capturedImageHandler=(imageData)=>{
     setCapturedImage(imageData);
     console.log(capturedImage);
@@ -73,9 +84,9 @@ const ImageRecognition=()=>{
         <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
           <Toolbar>
-          
+          <img src={lg} alt="logo" height="70px" width="70px" ></img>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              CHARAKAGIKI
+            AN INNOVATION OF MINISTRY OF AYUSH
             </Typography>
             
                 <IconButton onClick={()=>{setBackButton(true)}}>
@@ -110,7 +121,8 @@ const ImageRecognition=()=>{
           component="span"
           color="primary"
           sx={{ mr: 2, mt: 2 }}
-          onClick={(e) => sendPhoto(e)}
+          onClick={(e) => {setImg(true);
+            sendPhoto(e)}}
         >
           Upload Image
          
@@ -128,7 +140,8 @@ const ImageRecognition=()=>{
         </IconButton>
         {webcam && <WebCam onImageCapture={capturedImageHandler}/>}
         </Grid>
-        <Grid item xs={12} sm={5}>
+       
+          <Grid item xs={12} sm={5}>
         <Card sx={{ maxWidth: 345,mt:2,ml:2 }}>
       <CardActionArea>
         <CardMedia
@@ -147,7 +160,10 @@ const ImageRecognition=()=>{
         </CardContent>
       </CardActionArea>
     </Card>
-        </Grid>
+    </Grid>
+       
+        
+        
         </Grid>
         </Box>
       </Box>
