@@ -51,22 +51,15 @@ const ImageRecognition=()=>{
     const formdata = new FormData();
     formdata.append("file", selectedFile);
 
-    // await axios
-    //   .post("http://localhost:5000/process_image", formdata)
-    //   .then((res) => {
-    //     console.log(res.data);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
-    try{
-    const param = {name: "Priya", age: 20}
-    const res = await axios.post("http://localhost:3000/users", param);
-    console.log(res);
-    }
-    catch(e){
-      console.log(e)
-    }
+    await axios
+      .post("http://localhost:5000/process_image", formdata)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+ 
   };
   const[img,setImg]=useState(false);
   const[capturedImage,setCapturedImage]=useState(aloe);

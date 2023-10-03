@@ -11,6 +11,7 @@ import {
 	Paper,
 	Toolbar,
 	Typography,
+	useMediaQuery,
 } from "@mui/material";
 import lg from "./images/logofront.png"
 import image from "./images/imgsrbg.jpg";
@@ -25,6 +26,7 @@ import aloe from "./images/aloe.jpg";
 import axios from "axios";
 import { useState } from "react";
 const ImageSearch = () => {
+	const isSmallScreen = useMediaQuery('(max-width: 600px)');
 	const divStyle = {
 		position: "relative",
 		width: "100vw",
@@ -102,7 +104,17 @@ const ImageSearch = () => {
 					<Box sx={{ flexGrow: 1 }}>
 						<AppBar position="static">
 							<Toolbar>
-							<img src={lg} alt="logo" height="70px" width="70px" ></img>
+							<img
+  src={lg}
+  alt="logo"
+  height={isSmallScreen ? "50px" : "70px"}
+  width={isSmallScreen ? "50px" : "70px"}
+  style={{
+    maxWidth: "100%", 
+    height: "auto", 
+  }}
+/>
+
 								<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
 								AN INNOVATION OF MINISTRY OF AYUSH
 								</Typography>

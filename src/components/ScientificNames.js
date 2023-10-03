@@ -131,7 +131,7 @@ const ScientificNames = () => {
                 </IconButton>
               </Paper>
               {cardDisplay &&
-                            <Card sx={{ maxWidth: 345, mt: 2, ml: "35%" }}>
+                            <Card sx={{ maxWidth: 300, mt: 2, ml: "35%" }}>
                             <CardActionArea>
                                 <CardMedia
                                     component="img"
